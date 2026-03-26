@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <link rel="stylesheet" href="./style.css" />
+
+    <title>Frontend Mentor | Todo app</title>
+
+    <script defer src="./script.js"></script>
+  </head>
+  <body class="dark-mode">
+    <main>
+      <header>
+        <h1>Todo</h1>
+
+        <img class="mode" src="./images/icon-sun.svg" alt="" />
+      </header>
+
+      <form class="task-field_container">
+        <input type="text" name="" id="" placeholder="Create a todo..." />
+      </form>
+
+      <ul class="hidden task-container">
+        <ul class="tasks"></ul>
+        <ul class="task-status hidden">
+          <li class="active-task-no">
+            <!-- Add dynamic number  -->
+            <span></span> items left
+          </li>
+
+          <li class="empty"> </li>
+
+          <span>
+            <li class="all current-task_display">All</li>
+            <li class="active">Active</li>
+            <li class="completed">Completed</li>
+          </span>
+
+          <li class="clear-completed">Clear Completed</li>
+        </ul>
+      </ul>
+
+      <footer class="hidden">Drag and drop to reorder list</footer>
+    </main>
+
+  
+  </body>
+</html>

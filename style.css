@@ -1,0 +1,308 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+
+:root {
+  --Navy950: hsl(235, 21%, 11%);
+  --Navy900: hsl(235, 24%, 19%);
+  --Purple300: hsl(234, 39%, 85%);
+  /* --Purple100 (hover): hsl(236, 33%, 92%); */
+  --Purple600: hsl(235, 16%, 43%);
+  --Purple700: hsl(233, 14%, 35%);
+  --Purple800: hsl(237, 14%, 26%);
+  --Gray600: hsl(236, 9%, 61%);
+
+  color: #25273d;
+}
+
+* {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.dark-mode {
+  background: url(./images/bg-desktop-dark.jpg) black;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.dark-mode ul,
+.dark-mode input {
+  background-color: #25273d;
+}
+
+.light-mode {
+  background: url(./images/bg-desktop-light.jpg) #e3e4f1;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.light-mode ul,
+.light-mode input {
+  background-color: #ffffff;
+}
+
+.light-mode button.check {
+  border: 1px solid #e3e4f1;
+  opacity: 1;
+}
+
+.dark-mode ul li,
+.dark-mode input {
+  color: #494c6b;
+}
+
+body {
+  font-size: 18px;
+  width: 100dvw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+}
+
+header,
+main,
+.task-status,
+.task-status span,
+li.task {
+  display: flex;
+  align-items: center;
+}
+
+.tasks li {
+  border-bottom: 1px solid #97979721;
+  border-radius: 0;
+  padding-bottom: 1.4rem;
+}
+
+main {
+  margin-top: 4rem;
+}
+
+header,
+form {
+  width: 100%;
+}
+
+ul {
+  padding-left: 0;
+  list-style: none;
+  width: stretch;
+  padding: 0.5rem 1.4rem;
+}
+
+.task-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.dark-mode ul li,
+.dark-mode input {
+  color: var(--Purple300);
+}
+
+ul li {
+  margin: 1rem;
+}
+
+ul,
+input {
+  border-radius: 5px;
+}
+
+header,
+.task-status {
+  justify-content: space-between;
+}
+
+header h1 {
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  color: white;
+}
+
+input {
+  padding: 1rem 2rem;
+  font: inherit;
+  width: stretch;
+}
+
+input,
+.btn {
+  border: none;
+  outline: none;
+}
+
+main {
+  flex-direction: column;
+  width: 30%;
+}
+
+.task-status {
+  font-size: 0.7rem;
+  padding: 0;
+  margin-top: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+
+  li {
+    margin: 0.5rem;
+  }
+}
+
+.light-mode .task-status li {
+  color: #9495a5;
+}
+
+.dark-mode .task-status li {
+  color: #5b5e7e;
+}
+
+.task-status li:hover,
+.task-status li:focus {
+  color: #e3e4f1;
+}
+
+.task-status li:hover,
+.task-status li:focus {
+  color: #494c6b;
+}
+
+.btn {
+  background-color: inherit;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.dark-mode button.check {
+  border: 1px solid white;
+  opacity: 0.3;
+}
+
+button.check {
+  border-radius: 50px;
+  width: 24px;
+  height: 24px;
+  margin-right: 1rem;
+  padding: 1px;
+}
+
+li.task {
+  justify-content: space-between;
+}
+
+li.task:hover .remove {
+  visibility: visible;
+}
+
+footer {
+  color: #5b5e7e;
+  text-decoration: line-through;
+}
+
+li.current-task_display {
+  color: #3a7cfd !important;
+}
+
+.complete {
+  text-decoration: line-through;
+  color: #5b5e7e;
+}
+
+.complete button.check {
+  background-image: linear-gradient(#55ddff, #c058f3);
+  opacity: 1;
+}
+
+.err {
+  text-align: center;
+}
+
+.dark-mode .err {
+  color: #e3e4f1;
+}
+
+.light-mode .err {
+  color: #25273d;
+}
+
+.active-task-no span {
+  display: inline;
+}
+
+.empty {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  main {
+    width: 45%;
+  }
+}
+
+@media (max-width: 900px) {
+  body {
+    font-size: 14px;
+  }
+
+  .dark-mode,
+  .light-mode {
+    background-size: auto;
+  }
+
+  main {
+    width: 65%;
+  }
+
+  .task-status {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto;
+  }
+
+  .task-status span {
+    grid-row: 3;
+    grid-column: 1 / span 2;
+    justify-content: space-evenly;
+  }
+
+  li.empty {
+    display: block;
+    grid-row: 2;
+    grid-column: 1 / span 2;
+    margin: 0.5rem -1.4rem;
+    padding: 0.3rem;
+  }
+
+  .dark-mode li.empty {
+    background-color: black;
+  }
+
+  .light-mode li.empty {
+    background-color: #e3e4f1;
+  }
+}
+
+@media (max-width: 600px) {
+  .dark-mode {
+    background: url(./images/bg-mobile-dark.jpg) black;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .light-mode {
+    background: url(./images/bg-mobile-light.jpg) #e3e4f1;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  main {
+    width: 80%;
+  }
+}
+
+@media (max-width: 350px) {
+  main {
+    width: 90%;
+  }
+}
