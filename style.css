@@ -31,7 +31,7 @@
 .light-mode {
   background: url(./images/bg-desktop-light.jpg) #e3e4f1;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
 }
 
 .light-mode ul,
@@ -75,6 +75,9 @@ li.task {
 
 main {
   margin-top: 4rem;
+
+  flex-direction: column;
+  width: 40%;
 }
 
 header,
@@ -129,11 +132,6 @@ input,
 .btn {
   border: none;
   outline: none;
-}
-
-main {
-  flex-direction: column;
-  width: 30%;
 }
 
 .task-status {
@@ -206,7 +204,14 @@ li.current-task_display {
 
 .complete {
   text-decoration: line-through;
-  color: #5b5e7e;
+}
+
+.dark-mode .complete {
+  color: #4d5067;
+}
+
+.light-mode .complete {
+  color: #d1d2da;
 }
 
 .complete button.check {
@@ -237,6 +242,18 @@ li.current-task_display {
 @media (max-width: 1200px) {
   main {
     width: 45%;
+  }
+
+  .dark-mode {
+    background: url(./images/bg-desktop-dark.jpg) black;
+    background-repeat: no-repeat;
+    background-size: auto;
+  }
+
+  .light-mode {
+    background: url(./images/bg-desktop-light.jpg) #e3e4f1;
+    background-repeat: no-repeat;
+    background-size: auto;
   }
 }
 
@@ -297,7 +314,24 @@ li.current-task_display {
   }
 
   main {
-    width: 80%;
+    width: 85%;
+  }
+
+  .remove {
+    visibility: visible !important;
+  }
+
+  .tasks {
+    padding: 0rem;
+  }
+
+  .task-container {
+    padding-top: 0;
+  }
+
+  li.task {
+    margin: 0.5rem -1.4rem;
+    padding: 1rem 2rem;
   }
 }
 

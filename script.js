@@ -12,6 +12,7 @@ const body = document.querySelector("body");
 let index = 1;
 const allTaskArr = [];
 
+//Changing the mode of the desktop
 mode.addEventListener("click", function () {
   const desktopMode = body.classList[0];
 
@@ -32,6 +33,8 @@ mode.addEventListener("click", function () {
 taskFieldContainer.addEventListener("submit", function (ev) {
   ev.preventDefault();
   const inputTask = taskField.value;
+
+  renderStatus(taskElementsContainer, "all", taskStatus.querySelector(".all"));
 
   if (inputTask === "" || !isNaN(+inputTask)) {
     alert("Please enter a valid input");
@@ -96,30 +99,16 @@ taskContainer.addEventListener("click", function (ev) {
     const removeTaskBtn = ev.target.closest(".remove");
     if (removeTaskBtn) {
       taskElementsContainer.removeChild(taskEl);
-
-      const tasks = Array.from(taskElementsContainer.children);
-
-      if (tasks.length === 0) taskContainer.classList.add("hidden");
-
       updateallTaskArr(taskEl);
+
+      if (renderActiveTaskNo() >= 0)
+        activeTaskNoEl.textContent = renderActiveTaskNo();
+
+      if (allTaskArr.length === 0) {
+        taskContainer.classList.add("hidden");
+      }
     }
   }
-
-  const taskStatus = ev.target.closest(".task-status");
-  if (!taskStatus) return;
-
-  //rendering all tasks
-  const allTasks = ev.target.closest(".all");
-  if (allTasks) renderStatus(taskElementsContainer, "all", allTasks);
-
-  //rendering the completed tasks
-  const completedTasks = ev.target.closest(".completed");
-  if (completedTasks)
-    renderStatus(taskElementsContainer, "complete", completedTasks);
-
-  //rendering active tasks
-  const activeTasks = ev.target.closest(".active");
-  if (activeTasks) renderStatus(taskElementsContainer, "active", activeTasks);
 
   //clearing completed tasks
   const clearCompleted = ev.target.closest(".clear-completed");
@@ -132,6 +121,45 @@ taskContainer.addEventListener("click", function (ev) {
     });
   }
 });
+
+taskStatus.addEventListener("click", function (ev) {
+  //rendering all tasks
+  const allTasks = ev.target.closest(".all");
+  if (allTasks) renderStatus(taskElementsContainer, "all", allTasks);
+
+  //rendering the completed tasks
+  const completedTasks = ev.target.closest(".completed");
+  if (completedTasks)
+    renderStatus(taskElementsContainer, "complete", completedTasks);
+
+  //rendering active tasks
+  const activeTasks = ev.target.closest(".active");
+  if (activeTasks) renderStatus(taskElementsContainer, "active", activeTasks);
+});
+
+const renderStatus = function (parentEl, status, statusBtn) {
+  let tasks;
+
+  taskStatus.querySelectorAll("li").forEach((taskStatus) => {
+    taskStatus.classList.remove("current-task_display");
+    statusBtn.classList.add("current-task_display");
+  });
+
+  tasks =
+    status === "all"
+      ? allTaskArr
+      : allTaskArr.filter((task) => task.status === status);
+
+  if (tasks.length === 0) {
+    renderError(status);
+    return;
+  }
+
+  parentEl.innerHTML = "";
+  tasks.forEach((task) => {
+    renderTask(task.task, task.status, task.dataset);
+  });
+};
 
 const toggleCheck = function (el) {
   el.classList.toggle("active");
@@ -161,35 +189,10 @@ const updateTaskStatus = function (taskEl) {
 };
 
 const updateallTaskArr = function (taskEl) {
-  allTaskArr.forEach((task, i) => {
-    if (taskEl.dataset.taskNo === task.dataset) {
+  for (let i = allTaskArr.length - 1; i >= 0; i--) {
+    if (allTaskArr[i].dataset === taskEl.dataset.taskNo)
       allTaskArr.splice(i, 1);
-    }
-  });
-};
-
-const renderStatus = function (parentEl, status, statusBtn) {
-  let tasks;
-
-  taskStatus.querySelectorAll("li").forEach((status) => {
-    status.classList.remove("current-task_display");
-    statusBtn.classList.add("current-task_display");
-  });
-
-  tasks =
-    status === "all"
-      ? allTaskArr
-      : allTaskArr.filter((task) => task.status === status);
-
-  if (tasks.length === 0) {
-    renderError(status);
-    return;
   }
-
-  parentEl.innerHTML = "";
-  tasks.forEach((task) => {
-    renderTask(task.task, task.status, task.dataset);
-  });
 };
 
 const renderError = function (msg) {
