@@ -85,6 +85,7 @@ taskContainer.addEventListener("click", function (ev) {
 
   if (taskEl) {
     //Toggling the completed functionality
+
     const taskCheckBtn = ev.target.closest(".check");
     if (taskCheckBtn) {
       taskCheckBtn.querySelector("img").classList.toggle("hidden");
@@ -97,6 +98,7 @@ taskContainer.addEventListener("click", function (ev) {
 
     //Removing a task from the list
     const removeTaskBtn = ev.target.closest(".remove");
+
     if (removeTaskBtn) {
       taskElementsContainer.removeChild(taskEl);
       updateallTaskArr(taskEl);
@@ -106,6 +108,28 @@ taskContainer.addEventListener("click", function (ev) {
 
       if (allTaskArr.length === 0) {
         taskContainer.classList.add("hidden");
+        return;
+      }
+
+      if (allTaskArr.length !== 0) {
+        const completedTasks = allTaskArr.filter(
+          (task) => task.status === "complete",
+        );
+        const activeTasks = allTaskArr.filter(
+          (task) => task.status === "active",
+        );
+
+        taskStatus.querySelectorAll("li").forEach((taskStatus) => {
+          if (taskStatus.classList.contains("current-task_display")) {
+            if (completedTasks.length === 0) {
+              renderError(taskStatus.classList[0]);
+              return;
+            } else if (activeTasks.length === 0) {
+              renderError(taskStatus.classList[0]);
+              return;
+            }
+          }
+        });
       }
     }
   }
