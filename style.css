@@ -88,7 +88,7 @@ form {
 ul {
   padding-left: 0;
   list-style: none;
-  width: stretch;
+  width: -webkit-fill-available;
   padding: 0.5rem 1.4rem;
 }
 
@@ -125,7 +125,7 @@ header h1 {
 input {
   padding: 1rem 2rem;
   font: inherit;
-  width: stretch;
+  width: -webkit-fill-available;
 }
 
 input,
