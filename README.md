@@ -16,7 +16,7 @@ This project was built with:
 
 - The bonus part of the project ( - **Bonus**: Drag and drop to reorder items on the list ) has not been implemented, if you have a comprehensive and efficient way to implement it, please reach out to the email (@abdulsalamfareeda43@gmail.com)
 
-- Solution URL: (https://your-solution-url.com)
-- Live Site URL:(https://your-live-site-url.com)
+- Solution URL: (https://github.com/Fareeda08/TO-DO-APP.git)
+- Live Site URL:(https://fareeda-to-do-app.netlify.app/)
 
 Author: Fareeda Abdulsalam

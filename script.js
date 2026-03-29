@@ -61,7 +61,7 @@ const renderTask = function (task, status = "active", taskNo) {
 
           <span>
             <button class="check btn">
-              <img class="hidden" src="./images/icon-check.svg" alt="" />
+              <img class="${status === "complete" ? "" : "hidden"}" src="./images/icon-check.svg" alt="" />
             </button>
 
            <p> ${task}</p>
@@ -88,8 +88,7 @@ taskContainer.addEventListener("click", function (ev) {
 
     const taskCheckBtn = ev.target.closest(".check");
     if (taskCheckBtn) {
-      taskCheckBtn.querySelector("img").classList.toggle("hidden");
-      toggleCheck(taskEl);
+      toggleCheck(taskEl, taskCheckBtn);
 
       updateTaskStatus(taskEl);
 
@@ -193,9 +192,11 @@ const renderStatus = function (parentEl, status, statusBtn) {
   });
 };
 
-const toggleCheck = function (el) {
+const toggleCheck = function (el, checkBtn) {
   el.classList.toggle("active");
   el.classList.toggle("complete");
+
+  checkBtn.querySelector("img").classList.toggle("hidden");
 };
 
 const storeTask = function (taskEl) {
