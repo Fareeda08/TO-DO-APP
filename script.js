@@ -101,6 +101,7 @@ taskContainer.addEventListener("click", function (ev) {
 
     if (removeTaskBtn) {
       taskElementsContainer.removeChild(taskEl);
+
       updateallTaskArr(taskEl);
 
       if (renderActiveTaskNo() >= 0)
@@ -121,10 +122,17 @@ taskContainer.addEventListener("click", function (ev) {
 
         taskStatus.querySelectorAll("li").forEach((taskStatus) => {
           if (taskStatus.classList.contains("current-task_display")) {
-            if (completedTasks.length === 0) {
+            if (
+              completedTasks.length === 0 &&
+              taskStatus.classList[0] === "completed"
+            ) {
               renderError(taskStatus.classList[0]);
+
               return;
-            } else if (activeTasks.length === 0) {
+            } else if (
+              activeTasks.length === 0 &&
+              taskStatus.classList[0] === "active"
+            ) {
               renderError(taskStatus.classList[0]);
               return;
             }

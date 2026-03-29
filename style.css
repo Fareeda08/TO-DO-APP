@@ -219,8 +219,9 @@ li.current-task_display {
   opacity: 1;
 }
 
-.err {
+.tasks p.err {
   text-align: center;
+  display: block;
 }
 
 .dark-mode .err {
