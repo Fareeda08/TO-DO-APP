@@ -64,7 +64,7 @@ const renderTask = function (task, status = "active", taskNo) {
               <img class="hidden" src="./images/icon-check.svg" alt="" />
             </button>
 
-            ${task}
+           <p> ${task}</p>
           </span>
 
           <button class="remove btn hidden">

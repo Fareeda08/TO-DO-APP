@@ -340,3 +340,14 @@ li.current-task_display {
     width: 90%;
   }
 }
+
+.tasks span {
+  display: flex;
+  align-items: center;
+}
+
+.tasks p {
+  display: inline-block;
+  word-break: break-all;
+  max-inline-size: 85%;
+}
